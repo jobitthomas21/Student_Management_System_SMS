@@ -1,0 +1,38 @@
+{% extends 'hod_template/base_template.html' %}
+
+{% block page_title %}
+    Edit Student | Username: {{ username }} | #ID : {{ id }}
+{% endblock page_title %}
+
+{% block main_content %}
+
+{% load static %}
+
+<section class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                    <div class="card-header">
+                        <div class="carousel-item active">
+                            <img src="{% static '.\images\stud img.jpg' %}" class="d-block w-85" width="1500" height="500" alt="">
+                           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    {% comment %} Displaying the Django Form using forms.py EditStudentForm {% endcomment %}
+                    {% url 'edit_student_save' as action_path %}
+                    {% include 'hod_template/form_template.html' with messages=messages form=form action_path=action_path button_text="Update Student" %}
+
+                    </div>
+                    <!-- /.card -->
+
+                </div>
+            </div>
+
+        </div><!-- /.container-fluid -->
+      </section>
+
+  {% endblock main_content %}
